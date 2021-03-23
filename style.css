@@ -1,0 +1,157 @@
+/*Default tags=======================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-size: 93.75%;
+    background-color: #30313F;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: #EE4156;
+    border-radius: 0.8rem 0.8rem 0rem 0rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+header img {
+    width: max(1rem, 30px);
+    margin-left: 1rem;
+}
+
+
+/*Class==========================*/
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.card {
+    width: min(90vw, 500px);
+    background-color: aliceblue;
+    padding: 0rem 0rem 1rem 0rem;
+    border-radius: 1rem;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #30313F;
+}
+
+.session {
+    text-align: center;
+}
+
+.session h2 {
+    margin-top: -2rem;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #30313F;
+}
+
+.session p {
+    font-size: 1.4rem;
+    margin-top: 0.2rem;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.settings .bot {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1rem;
+    margin-top: -1.6rem;
+}
+
+
+input {
+    margin-top: -1rem;
+    font-size: 1.4rem;
+    height: 2.5rem;
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #EE4156;
+}
+
+.bot input {
+    margin-top: 0.15rem;
+
+    width: 3rem;
+    height: 3rem;
+
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    color: black;
+
+    background-color: rgb(130,137,229, 0.3);
+    border: none;
+    border-radius: 0.25rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+img {
+    margin-top: 0.5rem;
+    width: 2rem;
+}
+
+/* SMALL DEVICES - TABLETS */
+@media screen and (min-width: 600px){
+
+    .settings .bot {
+        font-size: 1.6rem;
+        margin-top: -1.6rem;
+    }    
+
+    input {
+        height: 3rem;
+        font-size: 1.6rem;
+    }
+
+    .bot input {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.2rem;
+    }
+
+    .session h2 {
+        margin-top: -2rem;
+        font-size: 7rem;
+        font-weight: bold;
+        color: #30313F;
+    }
+    
+    .session p {
+        font-size: 2rem;
+        margin-top: 0.7rem;
+    }
+    
+    img {
+        width: 2.5rem;
+    }
+    
+}
