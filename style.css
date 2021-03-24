@@ -25,6 +25,7 @@ header {
 header img {
     width: max(1rem, 30px);
     margin-left: 1rem;
+    margin-right: 1.5rem;
 }
 
 
@@ -81,7 +82,7 @@ header img {
 }
 
 
-input {
+button {
     margin-top: -1rem;
     font-size: 1.4rem;
     height: 2.5rem;
@@ -90,6 +91,7 @@ input {
     border: none;
     border-radius: 0.25rem;
     background-color: #EE4156;
+    cursor: pointer;
 }
 
 .bot input {

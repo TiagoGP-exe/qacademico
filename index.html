@@ -23,7 +23,7 @@
             </header>
 
             <div class="session">
-                <p>Session</p>
+                <p id="state">Session</p>
                 <h2 id="countdown">25:00</h2>
             </div>
 
@@ -33,9 +33,9 @@
                     <input id="sessionInput" type="number" value="25" max="60" min="5">
                 </div>
 
-                <input type="button" value="Start" id="Start" onclick="updateCountdown()">
+                <button type="button" id="startButton">Start</button>
 
-                <input type="button" value="Reset" id="Reset">
+                <button type="button" id="resetButton">Reset</button>
 
                 <div class="bot">
                     <p>Break</p>
