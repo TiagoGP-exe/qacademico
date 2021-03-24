@@ -3,7 +3,7 @@
   2 - salvar o estado do input de descanço para reaproveitar
   3 - refatorar e melhorar o uso de código
 */
-
+//Declarando variáveis
 const countDown = document.getElementById('countdown');
 const startButton = document.getElementById('startButton');
 const resetButton = document.getElementById('resetButton');
@@ -11,11 +11,13 @@ const sessionInput = document.getElementById('sessionInput');
 const breakInput = document.getElementById('breakInput');
 const state = document.getElementById('state');
 
-let time = 25 * 60;
-let breakTime = 5 * 60;
+let time = sessionInput.value * 60;
+let breakTime = breakInput.value * 60;
 let isBreakTime = false;
 let intervalId = 0;
+let vBreak, vSession, breakReset, sessionReset = false;
 
+//Função que realiza o calculo
 function updateVisor(timeToUpdate) {
   const minutes = Math.floor(timeToUpdate / 60);
   let seconds = timeToUpdate % 60;
@@ -23,36 +25,53 @@ function updateVisor(timeToUpdate) {
   countDown.innerHTML = `${minutes}:${seconds}`;
 }
 
+//Session
 function updateCountdown() {
-  updateVisor(time);
+  if (vSession || sessionReset){
+    time = sessionInput.value * 60;
+    vSession = false;
+    sessionReset = false;
+  }
 
-  if (time <= 0) {
+  updateVisor(time);
+  if (time == 0) {
     clearInterval(intervalId);
     isBreakTime = true;
     state.innerHTML = 'Break';
     startButton.innerHTML = 'Start';
     updateVisor(breakTime);
     intervalId = 0;
+    vBreak = true;
+    updateCountdownBreak()
   } else {
     time--;
   }
+
 }
 
-function updateCountdownBreak() {
-  updateVisor(breakTime);
 
-  if (breakTime <= 0) {
+//BreakTime
+function updateCountdownBreak() {
+  if (vBreak || breakReset) {
+    breakTime = breakInput.value * 60;
+    vBreak = false;
+    breakReset = false;
+  }
+  updateVisor(breakTime);
+  if (breakTime == 0) {
     clearInterval(intervalId);
     isBreakTime = false;
     state.innerHTML = 'Session';
     startButton.innerHTML = 'Start';
     updateVisor(time);
     intervalId = 0;
+    vSession = true;
+    updateCountdown()
   } else {
     breakTime--;
   }
 }
-
+//leitura de dados
 sessionInput.addEventListener('keyup', e => {
   time = e.target.value * 60;
   updateVisor(time);
@@ -60,21 +79,37 @@ sessionInput.addEventListener('keyup', e => {
 
 breakInput.addEventListener('keyup', e => {
   breakTime = e.target.value * 60;
+  updateVisor(breakTime);
 });
 
 startButton.addEventListener('click', () => {
-  if (intervalId === 0) {
-    if (isBreakTime) {
-      updateCountdownBreak(breakTime);
-      intervalId = setInterval(() => updateCountdownBreak(breakTime), 1000);
+  if(sessionInput.value >= 20 && sessionInput.value <= 60){
+    if(breakInput.value >= 5 && breakInput.value <= 15 ){
+      if (intervalId === 0) {
+        if (isBreakTime) {
+          updateCountdownBreak(breakTime);
+          intervalId = setInterval(() => updateCountdownBreak(breakTime), 1000);
+        } else {
+          updateCountdown(time);
+          intervalId = setInterval(() => updateCountdown(time), 1000);
+        }
+        startButton.innerHTML = 'Stop';
+      } else {
+        clearInterval(intervalId);
+        intervalId = 0;
+        startButton.innerHTML = 'Start';
+      }
     } else {
-      updateCountdown(time);
-      intervalId = setInterval(() => updateCountdown(time), 1000);
+      alert('O valor minino do break é 5, e o máximo é 15')
     }
-    startButton.innerHTML = 'Stop';
   } else {
-    clearInterval(intervalId);
-    intervalId = 0;
-    startButton.innerHTML = 'Start';
+    alert('O valor minino de session é 20, e o máximo é 60')
   }
+});
+
+  
+
+resetButton.addEventListener('click', () => {
+  breakReset = true;
+  sessionReset = true;
 });
