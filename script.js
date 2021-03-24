@@ -1,8 +1,3 @@
-/*
-  1 - salvar o estado do input de sessão para reaproveitar
-  2 - salvar o estado do input de descanço para reaproveitar
-  3 - refatorar e melhorar o uso de código
-*/
 //Declarando variáveis
 const countDown = document.getElementById('countdown');
 const startButton = document.getElementById('startButton');
@@ -107,8 +102,6 @@ startButton.addEventListener('click', () => {
     Toast.show('O valor minino de session é 20, e o máximo é 60','error')
   }
 });
-
-  
 
 resetButton.addEventListener('click', () => {
   breakReset = true;
