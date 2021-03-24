@@ -43,6 +43,7 @@ function updateCountdown() {
     intervalId = 0;
     vBreak = true;
     updateCountdownBreak()
+    Toast.show('Muito bem, aproveite o tempo de descanso','success')
   } else {
     time--;
   }
@@ -100,10 +101,10 @@ startButton.addEventListener('click', () => {
         startButton.innerHTML = 'Start';
       }
     } else {
-      alert('O valor minino do break é 5, e o máximo é 15')
+      Toast.show('O valor minino do break é 5, e o máximo é 15','error')
     }
   } else {
-    alert('O valor minino de session é 20, e o máximo é 60')
+    Toast.show('O valor minino de session é 20, e o máximo é 60','error')
   }
 });
 
