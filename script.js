@@ -105,8 +105,6 @@ startButton.addEventListener('click', () => {
   }
 });
 
-  
-
 resetButton.addEventListener('click', () => {
   breakReset = true;
   sessionReset = true;
