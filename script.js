@@ -1,9 +1,4 @@
-/*
-  1 - salvar o estado do input de sessão para reaproveitar
-  2 - salvar o estado do input de descanço para reaproveitar
-  3 - refatorar e melhorar o uso de código
-*/
-//Declarando variáveis
+const audio = new Audio('./alarm.ogg');
 const countDown = document.getElementById('countdown');
 const startButton = document.getElementById('startButton');
 const resetButton = document.getElementById('resetButton');
@@ -43,6 +38,7 @@ function updateCountdown() {
     intervalId = 0;
     vBreak = true;
     updateCountdownBreak()
+    audio.play()
     Toast.show('Muito bem, aproveite o tempo de descanso','success')
   } else {
     time--;
@@ -68,6 +64,7 @@ function updateCountdownBreak() {
     intervalId = 0;
     vSession = true;
     updateCountdown()
+    audio.play()
   } else {
     breakTime--;
   }
