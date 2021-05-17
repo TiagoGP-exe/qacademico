@@ -22,7 +22,7 @@ function updateVisor(timeToUpdate) {
 
 //Session
 function updateCountdown() {
-  if (vSession || sessionReset){
+  if (vSession || sessionReset) {
     time = sessionInput.value * 60;
     vSession = false;
     sessionReset = false;
@@ -39,13 +39,12 @@ function updateCountdown() {
     vBreak = true;
     updateCountdownBreak()
     audio.play()
-    Toast.show('Muito bem, aproveite o tempo de descanso','success')
+    Toast.show('Muito bem, aproveite o tempo de descanso', 'success')
   } else {
     time--;
   }
 
 }
-
 
 //BreakTime
 function updateCountdownBreak() {
@@ -72,17 +71,18 @@ function updateCountdownBreak() {
 //leitura de dados
 sessionInput.addEventListener('keyup', e => {
   time = e.target.value * 60;
+  state.innerHTML = 'Session';
   updateVisor(time);
 });
 
 breakInput.addEventListener('keyup', e => {
   breakTime = e.target.value * 60;
+  state.innerHTML = 'Break';
   updateVisor(breakTime);
 });
-
 startButton.addEventListener('click', () => {
-  if(sessionInput.value >= 20 && sessionInput.value <= 60){
-    if(breakInput.value >= 5 && breakInput.value <= 15 ){
+  if (sessionInput.value > 0 && breakInput.value > 0) {
+    if (breakInput.value <= (sessionInput.value) * 0.5) {
       if (intervalId === 0) {
         if (isBreakTime) {
           updateCountdownBreak(breakTime);
@@ -98,10 +98,10 @@ startButton.addEventListener('click', () => {
         startButton.innerHTML = 'Start';
       }
     } else {
-      Toast.show('O valor minino do break é 5, e o máximo é 15','error')
+      Toast.show('O valor máximo do break é metade da session', 'error')
     }
   } else {
-    Toast.show('O valor minino de session é 20, e o máximo é 60','error')
+    Toast.show('insira um valor em session ou break time', 'error')
   }
 });
 

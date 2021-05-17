@@ -5,6 +5,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 input:focus, button:focus {
@@ -31,7 +37,6 @@ header img {
     margin-left: 1rem;
     margin-right: 0.5rem;
 }
-
 
 /*Class==========================*/
 
@@ -85,7 +90,6 @@ header img {
     margin-top: -1.6rem;
 }
 
-
 button {
     margin-top: -1rem;
     font-size: 1.4rem;
@@ -100,24 +104,20 @@ button {
 
 .bot input {
     margin-top: 0.15rem;
-
     width: 3rem;
     height: 3rem;
-
     font-size: 1rem;
     font-weight: 700;
     text-align: center;
     color: black;
-
-    background-color: rgb(130,137,229, 0.3);
+    background-color: rgb(130, 137, 229, 0.3);
     border: none;
     border-radius: 0.25rem;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 img {
@@ -126,38 +126,32 @@ img {
 }
 
 /* SMALL DEVICES - TABLETS */
-@media screen and (min-width: 600px){
 
+@media screen and (min-width: 600px) {
     .settings .bot {
         font-size: 1.6rem;
-        margin-top: -1.6rem;
-    }    
-
+        margin-top: -3rem;
+    }
     input {
         height: 3rem;
         font-size: 1.6rem;
     }
-
     .bot input {
         width: 4rem;
         height: 4rem;
         font-size: 1.2rem;
     }
-
     .session h2 {
         margin-top: -2rem;
         font-size: 7rem;
         font-weight: bold;
         color: #30313F;
     }
-    
     .session p {
         font-size: 2rem;
         margin-top: 0.7rem;
     }
-    
     img {
         width: 2.5rem;
     }
-    
 }
